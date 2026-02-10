@@ -1,0 +1,23 @@
+# Node.js
+node_modules
+dist
+.env
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.pcap
+
+# Docker
+docker-compose.override.yml

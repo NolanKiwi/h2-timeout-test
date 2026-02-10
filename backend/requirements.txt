@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+h2
+docker
+requests
+websockets
+dnspython
+pcap-ct

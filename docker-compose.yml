@@ -1,0 +1,30 @@
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/captures:/app/captures
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    # Optional: use privileged if cap_add is insufficient
+    # privileged: true
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://backend:8000
+    depends_on:
+      - backend
+
+# Note: Create a frontend Dockerfile to run `npm run dev`
