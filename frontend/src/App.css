@@ -1,42 +1,166 @@
-#root {
-  max-width: 1280px;
+/* h2-timeout-test/frontend/src/App.css */
+body {
+  margin: 0;
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+header {
+  border-bottom: 1px solid #333;
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
 
-.card {
-  padding: 2em;
+.form-group label {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: #aaa;
 }
 
-.read-the-docs {
-  color: #888;
+input {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-start {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-stop {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.status {
+  font-family: monospace;
+  color: #ff9800;
+}
+
+.terminals {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.term-pane {
+  background: #000;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.term-pane h3 {
+  margin-top: 0;
+  color: #666;
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+
+.term-container {
+  height: 600px;
+  /* xterm.js handles overflow */
+}
+
+/* Force left align and Consolas font for xterm */
+.xterm-screen canvas {
+    font-family: 'Consolas', monospace !important;
+}
+.xterm-rows {
+    font-family: 'Consolas', monospace !important;
+    text-align: left !important;
+}
+.xterm-viewport {
+    text-align: left !important;
+}
+.xterm {
+    text-align: left !important;
+}
+
+/* Explanation Section */
+.explanation {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.explanation h2 {
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.explanation h3 {
+  color: #4caf50;
+  margin-top: 20px;
+}
+
+.diagram {
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 4px;
+  font-family: monospace;
+  white-space: pre;
+  overflow-x: auto;
+  line-height: 1.4;
+  margin: 15px 0;
+  color: #aed581;
+}
+
+.log-format-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.log-format-table th, .log-format-table td {
+  border: 1px solid #444;
+  padding: 8px;
+  text-align: left;
+}
+
+.log-format-table th {
+  background: #333;
 }

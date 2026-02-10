@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -87,8 +87,8 @@ input {
 }
 
 .terminals {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -108,5 +108,24 @@ input {
 
 .term-container {
   height: 400px;
+  /* xterm.js handles overflow */
+}
+
+/* Force left align and Consolas font for xterm */
+.xterm-screen canvas {
+    font-family: 'Consolas', monospace !important;
+}
+.xterm-rows {
+    font-family: 'Consolas', monospace !important;
+    text-align: left !important;
+}
+.xterm-viewport {
+    text-align: left !important;
+}
+.xterm {
+    text-align: left !important;
+}
+.term-container {
+  height: 600px;
   /* xterm.js handles overflow */
 }
