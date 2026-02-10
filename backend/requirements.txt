@@ -6,3 +6,4 @@ requests
 websockets
 dnspython
 pcap-ct
+python-multipart
