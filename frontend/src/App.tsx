@@ -68,7 +68,7 @@ function App() {
     const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     const wsBase = `${proto}//${window.location.host}`; 
     
-    wsH2.current = new WebSocket(`${wsBase}/ws/h2`)
+    wsH2.current = new WebSocket(`${wsBase}${import.meta.env.BASE_URL}ws/h2`)
     wsH2.current.onmessage = (event) => {
       const msg = event.data.replace(/\n/g, '\r\n');
       h2Xterm.current?.write(msg) 
@@ -82,7 +82,7 @@ function App() {
     try {
       const payload = { ...config, interface: 'any' }
       
-      const res = await fetch('/api/run', {
+      const res = await fetch(`${import.meta.env.BASE_URL}api/run`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -101,7 +101,7 @@ function App() {
 
   const handleStop = async () => {
     try {
-      await fetch('/api/stop', { method: 'POST' })
+      await fetch(`${import.meta.env.BASE_URL}api/stop`, { method: 'POST' })
       setRunning(false)
       wsH2.current?.close()
     } catch (e) {
