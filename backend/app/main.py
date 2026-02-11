@@ -41,6 +41,13 @@ class RunConfig(BaseModel):
 
 @app.post("/api/run")
 async def start_run(config: RunConfig):
+    # Auto-cleanup: Check if previous process actually finished
+    if state.running and state.h2_proc:
+        if state.h2_proc.returncode is not None:
+            # Process exited on its own (e.g. timeout or error)
+            state.running = False
+            state.h2_proc = None
+
     if state.running:
         raise HTTPException(status_code=400, detail="Experiment already running")
     
@@ -128,4 +135,8 @@ async def websocket_h2_logs(websocket: WebSocket):
     except Exception as e:
         print(f"WS H2 Error: {e}")
     finally:
+        # If the process finished (EOF reached), update state
+        if state.h2_proc and state.h2_proc.returncode is not None:
+             state.running = False
+             state.h2_proc = None
         await websocket.close()
